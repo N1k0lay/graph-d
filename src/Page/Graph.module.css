@@ -1,0 +1,11 @@
+.graph > div {
+    background-color: white;
+}
+
+.formData {
+    margin: 5px;
+}
+
+.graph label {
+    display: block;
+}
