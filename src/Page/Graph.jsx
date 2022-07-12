@@ -8,9 +8,14 @@ const Graph = () => {
     const [maxX, setMaxX] = useState(1);
     const [spanX, setSpanX] = useState(1);
     const [selectedFunc, setSelectedFunc] = useState(1);
-    const [arrayX, setArrayX] = useState(['']);
-    const [arrayY, setArrayY] = useState(['']);
+    const [arrayX, setArrayX] = useState([]);
+    const [arrayY, setArrayY] = useState([]);
 
+    useEffect(() => {
+        console.log('useEffect');
+        console.log(arrayX);
+
+    })
 
     const spanCol = [
         {
@@ -39,7 +44,7 @@ const Graph = () => {
 
     ];
 
-    function generateArray (min, max, span) {
+    function generateArray(min, max, span) {
         return 0;
     }
 
@@ -80,13 +85,13 @@ const Graph = () => {
                         </Radio.Group>
                         <Button onClick={() => {
                             console.log(`minX ${minX}; maxX ${maxX}; spanX ${spanX}; func ${selectedFunc}`);
-                            setArrayX(['']);
-                            setArrayY(['']);
+                            setArrayX([]);
+                            setArrayY([]);
                             for (let i = minX; i <= maxX; i = i + spanX) {
-                                setArrayX( array => [...array, `${i}`]);
+                                setArrayX(oldArray => [...oldArray, i]);
                             }
                             for (let i = 0; i < arrayX.length; i++) {
-                                setArrayY( array => [...array, `${arrayX[i]*2}`]);
+                                setArrayY(oldArray => [...oldArray, arrayX[i] * 2]);
                             }
                             console.log(arrayX);
                             console.log(arrayY);
@@ -95,10 +100,23 @@ const Graph = () => {
                 </div>
             </Col>
             <Col span={18}>
-
-                <Table dataSource={dataStr} columns={spanCol} scroll={{
-                    x: "100vw",
-                }}/>;
+                <div className={style.bigTable}>
+                    <table>
+                        <tr>
+                            {arrayX.map(n => {
+                                return <th>{n}</th>
+                            })}
+                        </tr>
+                        <tr>
+                            {arrayY.map(n => {
+                                return <th>{n}</th>
+                            })}
+                        </tr>
+                    </table>
+                </div>
+                {/*<Table dataSource={dataStr} columns={spanCol} scroll={{*/}
+                {/*    x: "100vw",*/}
+                {/*}}/>*/}
             </Col>
         </Row>
     )
