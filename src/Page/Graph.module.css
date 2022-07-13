@@ -22,3 +22,7 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
 }
+
+svg {
+    background-color: black;
+}

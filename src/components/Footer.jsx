@@ -9,7 +9,7 @@ const FooterSite = () => {
                 textAlign: 'center',
             }}
         >
-            Ant Design ©2018 Created by Ant UED
+            N1k0lay ©2022 Created by N1k0lay
         </Footer>
     );
 };
